@@ -1,11 +1,15 @@
 class Solution {
     fun isPalindrome(s: String): Boolean {
-        val rawStr = StringBuilder()
-        for(i in s){
-            if(i.isLetterOrDigit()){
-                rawStr.append(i.lowercaseChar())
+        val scpy = s.lowercase().filter { it.isLetterOrDigit() }
+        var start = 0
+        var end = scpy.length - 1
+        while(start < end){
+            if(scpy[start] != scpy[end]){
+                return false
             }
+            start++
+            end--
         }
-        return rawStr.toString() == rawStr.toString().reversed()
+        return true
     }
 }
